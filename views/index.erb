@@ -7,6 +7,7 @@
 		<%= post['content'] %>
 		<br />
 		<sub><b>Added</b> at <%= post['created_date'] %></sub>
+		<a href="/post/<%= post['id'] %>"><sub>Comments</sub></a>
 	</p>
 	<hr />
 <% end %>
