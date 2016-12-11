@@ -25,7 +25,10 @@ configure do
 end
 
 get '/' do
-  erb 'Hipsrozorium waiting for your new post!'
+  # выбираем список постов из БД
+
+  @results = @db.execute 'SELECT * FROM Posts order by created_date desc'
+  
   erb :index
 end
 
