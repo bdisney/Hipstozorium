@@ -49,3 +49,9 @@ post '/new' do
 
   redirect to '/'
 end
+
+# вывод инф-ии о посте
+get '/details/:post_id' do
+  post_id = params[:post_id]
+  erb "Displaing results information for post with id #{post_id}"
+end
