@@ -8,7 +8,9 @@ def init_db
   @db.results_as_hash = true
 end
 
+# вызывается каждый раз при обновлении страницы
 before do
+#инициализация БД  
   init_db
 end
 
@@ -22,13 +24,20 @@ configure do
     )'
 end
 
-
 get '/new' do
   erb :new
 end
 
 post '/new' do
   content = params[:content]
+
+  if content.length <= 0
+    @error = 'Type post text'
+    return erb :new
+  end
+
+  @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
+
 
   erb "You typed #{content}"
 end
