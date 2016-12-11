@@ -3,5 +3,5 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 get '/new' do
-  erb "Hello World"
+  erb :new
 end
