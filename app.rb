@@ -53,7 +53,7 @@ end
 # вывод инф-ии о посте
 get '/details/:post_id' do
 
-  # олучаем переменную из url'a
+  # получаем переменную из url'a
   post_id = params[:post_id]
 
   # получаем список постов (у нас будет список из 1-го поста)
@@ -62,4 +62,16 @@ get '/details/:post_id' do
   @row = results[0]
 
   erb :details
+end
+
+# добавление новых комментариев
+post '/details/:post_id' do
+  # получаем переменную из url'a
+  post_id = params[:post_id]
+
+  # получаем переменную из post-запроса
+  content = params[:content]
+
+  erb "You typed #{content} for post #{post_id}"
+
 end
