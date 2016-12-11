@@ -24,6 +24,11 @@ configure do
     )'
 end
 
+get '/' do
+  erb 'Hipsrozorium waiting for your new post!'
+  erb :index
+end
+
 get '/new' do
   erb :new
 end
@@ -36,8 +41,8 @@ post '/new' do
     return erb :new
   end
 
+# сохранение данных в БД
   @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
-
 
   erb "You typed #{content}"
 end
